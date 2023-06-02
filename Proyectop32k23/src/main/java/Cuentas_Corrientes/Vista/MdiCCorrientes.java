@@ -14,7 +14,6 @@ import javax.swing.JOptionPane;
  * @author visitante
  */
 public class MdiCCorrientes extends javax.swing.JFrame {
-
     /**
      * Creates new form MdiGeneral
      */
@@ -25,7 +24,7 @@ public class MdiCCorrientes extends javax.swing.JFrame {
         this.setTitle("Menu Gestión Cuentas Corrientes");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,6 +64,12 @@ public class MdiCCorrientes extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         btnAyudaTr = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        mnuAyudasVentas = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
 
         jMenuItem1MdiVentas.setText("jMenuItem1");
 
@@ -231,6 +236,21 @@ public class MdiCCorrientes extends javax.swing.JFrame {
             }
         });
         mnuReportesVentas.add(btnRptTr);
+        jMenuItem7.setText("Reporte Transacciones");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        mnuReportesVentas.add(jMenuItem7);
+
+        jMenuItem8.setText("ReporteProveedores");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        mnuReportesVentas.add(jMenuItem8);
 
         mnuGeneralVentas.add(mnuReportesVentas);
 
@@ -267,6 +287,13 @@ public class MdiCCorrientes extends javax.swing.JFrame {
             }
         });
         mnuAyudasVentas.add(jMenuItem8);
+        jMenuItem9.setText("Ayuda Proveedores");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        mnuAyudasVentas.add(jMenuItem9);
 
         mnuGeneralVentas.add(mnuAyudasVentas);
 
@@ -419,7 +446,7 @@ public class MdiCCorrientes extends javax.swing.JFrame {
         ventana.show();
     }//GEN-LAST:event_btnAyudaTrActionPerformed
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
         frmAyudaTransacciones ventana = new frmAyudaTransacciones();
         jDesktopPane1.add(ventana);
@@ -427,7 +454,7 @@ public class MdiCCorrientes extends javax.swing.JFrame {
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
         ventana.show();
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
+    }                                          
 
     private void btnRptProvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRptProvActionPerformed
         // TODO add your handling code here:
@@ -439,7 +466,9 @@ public class MdiCCorrientes extends javax.swing.JFrame {
         ventana.show();
     }//GEN-LAST:event_btnRptProvActionPerformed
 
-    private void btnRptTrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRptTrActionPerformed
+    private void btnRptTrActionPerformed(java.awt.event.ActionEvent evt) {                                         
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
         frmReportesTransacciones ventana = new frmReportesTransacciones();
         jDesktopPane1.add(ventana);
@@ -447,7 +476,29 @@ public class MdiCCorrientes extends javax.swing.JFrame {
         Dimension FrameSize = ventana.getSize();
         ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
         ventana.show();
-    }//GEN-LAST:event_btnRptTrActionPerformed
+    }                                        
+
+    }                                          
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+        frmReportesProveedores ventana = new frmReportesProveedores();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+        ventana.show();
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        // TODO add your handling code here:
+        frmAyudaProveedores ventana = new frmAyudaProveedores();
+        jDesktopPane1.add(ventana);
+        Dimension desktopSize = jDesktopPane1.getSize();
+        Dimension FrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
+        ventana.show();
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -490,7 +541,8 @@ public class MdiCCorrientes extends javax.swing.JFrame {
             }
         });
     }
-
+        
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MantenimientoCC;
     private javax.swing.JMenuItem MantenimientoCCProv;
@@ -513,6 +565,9 @@ public class MdiCCorrientes extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenu mnuArchivoVentas;
     private javax.swing.JMenu mnuAyudasVentas;
     private javax.swing.JMenu mnuCatalogosMantenimientosVentas;
