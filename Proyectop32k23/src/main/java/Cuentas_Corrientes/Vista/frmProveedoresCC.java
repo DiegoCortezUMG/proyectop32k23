@@ -37,7 +37,7 @@ import net.sf.jasperreports.view.JasperViewer;
 public class frmProveedoresCC extends javax.swing.JInternalFrame {
     
 //int codigoAplicacion=preguntar;
-public void llenadoDeCB() {
+/*public void llenadoDeCB() {
         clsProveedoresCC prov = new clsProveedoresCC();
         List<clsProveedoresCC> listaProv = prov.getListadoProveedores();
         cbIdProv.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -124,7 +124,6 @@ public void llenadoDeTabla() {
         txtnofac = new javax.swing.JTextField();
         txtnit = new javax.swing.JTextField();
         btnReporte = new javax.swing.JButton();
-        cbIdProv = new javax.swing.JComboBox<>();
         txtidprov = new javax.swing.JTextField();
 
         lb2.setForeground(new java.awt.Color(204, 204, 204));
@@ -270,8 +269,6 @@ public void llenadoDeTabla() {
             }
         });
 
-        cbIdProv.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         txtidprov.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         txtidprov.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
         txtidprov.addActionListener(new java.awt.event.ActionListener() {
@@ -315,15 +312,12 @@ public void llenadoDeTabla() {
                             .addComponent(label5))
                         .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(cbIdProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtidprov))
                             .addComponent(txtnit)
                             .addComponent(txtfecha, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
-                            .addComponent(txttotfac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtnofac, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
-                            .addComponent(txtnombreC, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE))))
+                            .addComponent(txtnombreC, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                            .addComponent(txtidprov, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txttotfac, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -362,10 +356,9 @@ public void llenadoDeTabla() {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lb)
                     .addComponent(label1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label5)
-                    .addComponent(cbIdProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtidprov, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -450,10 +443,11 @@ public void llenadoDeTabla() {
         prov.setIdProv(Integer.parseInt(txtidprov.getText()));
         prov.setNombreProv(txtnombreC.getText());
         prov.setFechaProv(txtfecha.getText());
+        prov.setNitProv(txtnit.getText());
         prov.setFactProv(txtnofac.getText());
         prov.setTotFacturaProv(Double.parseDouble(txttotfac.getText()));
         int proveedor = prov.getIdProv();
-        for (int i = 1; i < cbIdProv.getItemCount(); i++) {
+        /*for (int i = 1; i < cbIdProv.getItemCount(); i++) {
             String item = cbIdProv.getItemAt(i).toString();
             int itemId = Integer.parseInt(item.split(" - ")[0]); // Obtener el ID del item
             
@@ -461,7 +455,7 @@ public void llenadoDeTabla() {
                 cbIdProv.setSelectedIndex(i);
                 break;
             }
-        }
+        }*/
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n", "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
         int resultadoBitacora=0;
         clsBitacora bitacoraRegistro = new clsBitacora();
@@ -481,17 +475,9 @@ public void llenadoDeTabla() {
         System.out.println("Cuenta Corriente retornada:" + transaccion);
         txtnit.setText(transaccion.getNitProv());
         int tipoMonedaId = transaccion.getIdProv();
-        for (int i = 1; i < cbIdProv.getItemCount(); i++) {
-            String item = cbIdProv.getItemAt(i).toString();
-            int itemId = Integer.parseInt(item.split(" - ")[0]); // Obtener el ID del item
-            
-            if (itemId == tipoMonedaId) {
-                cbIdProv.setSelectedIndex(i);
-                break;
-            }
-        }
         txtidprov.setText(String.valueOf(transaccion.getIdProv()));
         txtfecha.setText(transaccion.getFechaProv());
+        txtnit.setText(transaccion.getNitProv());
         txtnombreC.setText(transaccion.getNombreProv());
         txtnofac.setText(transaccion.getFactProv());
         txttotfac.setText(String.valueOf(transaccion.getTotFacturaProv()));
@@ -504,7 +490,6 @@ public void llenadoDeTabla() {
         prov.setIdProv(Integer.parseInt(txtidprov.getText()));
         prov.setIdProv(Integer.parseInt(txtbuscado.getText()));
         prov.setNitProv(txtnit.getText());
-        prov.setIdProv(Integer.parseInt(cbIdProv.getSelectedItem().toString()));
         prov.setFechaProv(txtfecha.getText());
         prov.setNombreProv(txtnombreC.getText());
         prov.setFactProv(txtnofac.getText());
@@ -561,7 +546,6 @@ public void llenadoDeTabla() {
     public void limpiarTextos()
     {
         // REALIZADO POR : DANIEL ALEXANDER HALL ALVAREZ;9959-21-1395
-        cbIdProv.setSelectedIndex(0);
         txtnit.setText("");
         txtfecha.setText("");
         txtnombreC.setText("");
@@ -578,7 +562,6 @@ public void llenadoDeTabla() {
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnReporte;
-    private javax.swing.JComboBox<String> cbIdProv;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label12;
