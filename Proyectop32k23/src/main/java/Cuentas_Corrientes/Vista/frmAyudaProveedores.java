@@ -10,12 +10,12 @@ import java.io.File;
  *
  * @author halld
  */
-public class frmAyudaCCProveedores extends javax.swing.JInternalFrame {
+public class frmAyudaProveedores extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form frmAyudaCCProveedores
      */
-    public frmAyudaCCProveedores() {
+    public frmAyudaProveedores() {
         initComponents();
     }
 
