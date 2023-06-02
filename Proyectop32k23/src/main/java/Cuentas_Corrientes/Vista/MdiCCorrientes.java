@@ -421,7 +421,7 @@ public class MdiCCorrientes extends javax.swing.JFrame {
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         // TODO add your handling code here:
-        frmReportesTransacciones ventana = new frmReportesTransacciones();
+        frmAyudaTransacciones ventana = new frmAyudaTransacciones();
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventana.getSize();
